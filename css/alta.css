@@ -1,0 +1,25 @@
+body{
+    margin: 0;
+    background-color: rgb(108, 67, 67);
+}
+
+form{
+    padding: 10px;
+}
+
+form input{
+    display: block;
+    width: auto;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 2px;
+    
+}
+
+input[type="submit"]{
+    border-radius: 2px;
+    border: solid 1px white;
+    background-color: black;
+    color: white;
+    width: 5%;
+}
