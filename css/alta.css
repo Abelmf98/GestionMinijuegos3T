@@ -7,6 +7,10 @@ form{
     padding: 10px;
 }
 
+h1{
+    color: white;
+}
+
 form input{
     display: block;
     width: auto;
@@ -22,4 +26,13 @@ input[type="submit"]{
     background-color: black;
     color: white;
     width: 5%;
+}
+
+p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+#nombre{
+    color: yellow;
 }
