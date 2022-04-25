@@ -24,7 +24,13 @@
         echo '</form>';
     }else{
         /*Comprobamos si hay campos vacios */
-        if(!empty($_POST["nombre"] && $_POST["icono"] && $_POST["ruta"])){ /*Me falta comprobar el campo que se muestre a NULL en la BBDD */
+        if(!empty($_POST["nombre"] && $_POST["ruta"])){
+            /*Compruebo si el campo icono esta vacio y lo guardo como NULL en la base de datos */
+            if($_POST['icono']==''){
+                $_POST['icono'] = 'NULL';
+            }else{
+                $_POST['icono']="'".$_POST['icono']."'";
+            }
         /*Hacemos la consulta */
         $consultasql = "INSERT INTO miniJuego (nombre, icono, ruta) 
         VALUES ('".$_POST["nombre"]."','".$_POST["icono"]."','".$_POST["ruta"]."');";
