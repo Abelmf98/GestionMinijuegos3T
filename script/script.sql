@@ -12,7 +12,7 @@ USE miniJuegos;
 -- Tabla
 CREATE TABLE miniJuego(
     idMinijuego tinyint UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nombre varchar(60) NOT NULL,
+    nombre varchar(60) NOT NULL UNIQUE,
     icono varchar(60) NULL,
     ruta varchar(255) NOT NULL
 );
