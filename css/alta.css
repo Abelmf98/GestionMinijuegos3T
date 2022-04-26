@@ -1,6 +1,8 @@
 body{
-    margin: 0;
+    margin: 0 auto;
     background-color: rgb(108, 67, 67);
+    width: 1440px;
+    padding: 20px;
 }
 
 form{
@@ -28,11 +30,13 @@ input[type="submit"]{
     width: 5%;
 }
 
-p{
+h3{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
+    margin: auto;
 }
 
 #nombre{
     color: yellow;
+    margin: auto;
 }

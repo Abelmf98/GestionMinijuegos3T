@@ -25,11 +25,10 @@
     }else{
         /*Comprobamos si hay campos vacios */
         if(!empty($_POST["nombre"] && $_POST["ruta"])){
-            /*Compruebo si el campo icono esta vacio y lo guardo como NULL en la base de datos */
-            if($_POST['icono']==''){
-                $_POST['icono'] = 'NULL';
+            if(empty($_POST['icono'])){
+                $icono = "NULL";
             }else{
-                $_POST['icono']="'".$_POST['icono']."'";
+                $icono = "'".$_POST['icono']."'";
             }
         /*Hacemos la consulta */
         $consultasql = "INSERT INTO miniJuego (nombre, icono, ruta) 
@@ -37,14 +36,15 @@
         $objMetodo->hacerconsulta($consultasql);
             /*Comprobamos las filas afectadas para añadir los minijuegos */
             if($objMetodo->comprobarafectada()>0){
-                echo '<p>Se ha añadido satisfactioriamente el minijuego: </p>'.'<p id="nombre">'.$_POST["nombre"].'</p></br>';
+                echo '<h3>Se ha añadido satisfactioriamente el minijuego: </h3>'.'<h3 id="nombre">'.$_POST["nombre"].'</h3></br>';
             }else{
-                echo '<p>Se ha producido un error</p>';
+                echo '<h3>Se ha producido un error</h3>';
             }
         }else{
-            echo '<p>Los campos nombre y ruta son obligatorios</p>';
+            echo '<h3>Los campos nombre y ruta son obligatorios</h3>';
         }
-    }        
+    } 
+    echo '<br>'.phpversion();       
     ?>
 </body>
 </html>
