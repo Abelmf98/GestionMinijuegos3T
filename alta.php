@@ -26,13 +26,13 @@
         /*Comprobamos si hay campos vacios */
         if(!empty($_POST["nombre"] && $_POST["ruta"])){
             if(empty($_POST['icono'])){
-                $icono = "NULL";
+                $icono = 'NULL';
             }else{
                 $icono = "'".$_POST['icono']."'";
             }
         /*Hacemos la consulta */
         $consultasql = "INSERT INTO miniJuego (nombre, icono, ruta) 
-        VALUES ('".$_POST["nombre"]."','".$_POST["icono"]."','".$_POST["ruta"]."');";
+        VALUES ('".$_POST["nombre"]."',$icono,'".$_POST["ruta"]."');";
         $objMetodo->hacerconsulta($consultasql);
             /*Comprobamos las filas afectadas para añadir los minijuegos */
             if($objMetodo->comprobarafectada()>0){
