@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/alta.css">
+    <link rel="stylesheet" href="css/estilo.css">
     <title>Alta Minijuego</title>
 </head>
 <body>
@@ -43,8 +43,9 @@
         }else{
             echo '<h3>Los campos nombre y ruta son obligatorios</h3>';
         }
-    } 
-    echo '<br>'.phpversion();       
+    }
+    echo '<br><a href="listado.php">*Listado de Minijuegos</a>';
+    /* echo '<br>'.phpversion(); */       
     ?>
 </body>
 </html>

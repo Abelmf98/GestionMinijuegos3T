@@ -26,4 +26,16 @@ Class metodos{
         /*Como vamos a utilizar insert necesitaremos affected_rows que devolvemos el resultado desde el alta */
         return $this->mysqli->affected_rows;
     }
+
+    /*Haremos un metodo para comprobar el numero de filas que tiene una tabla */
+    function revisarnumrow(){
+        /*Le devolvemos lo que haya dentro */
+        return $this->resultado->num_rows;
+    }
+
+    /*Necesitaremos un metodo para extraer las filas */
+    function sacarfila(){
+        /*Utilizaremos fetch_array, que obtiene devuelve el array de una fila */
+        return $this->resultado->fetch_array();
+    }
 }
