@@ -26,7 +26,7 @@
 
         }
 
-        header('Location: listado.php')
+        header('Location: listado.php');
     ?>
 </body>
 </html>
