@@ -43,7 +43,7 @@
                     echo '<td>'.$fila["icono"].'</td>';
                     echo '<td>'.$fila["ruta"].'</td>';
                     echo '<td><a href="#">Modificar</a></td>';
-                    echo '<td><a href="#">Eliminar</a></td>';
+                    echo '<td><a href="borrado.php">Eliminar</a></td>';
                 echo '</tr>';
                 }     
             echo '</table>';
