@@ -24,24 +24,40 @@
         echo '</form>';
     }else{
         /*Comprobamos si hay campos vacios */
-        if(!empty($_POST["nombre"] && $_POST["ruta"])){
-            if(empty($_POST['icono'])){
-                $icono = 'NULL';
-            }else{
-                $icono = "'".$_POST['icono']."'";
-            }
-        /*Hacemos la consulta */
-        $consultasql = "INSERT INTO miniJuego (nombre, icono, ruta) 
-        VALUES ('".$_POST["nombre"]."',$icono,'".$_POST["ruta"]."');";
-        $objMetodo->hacerconsulta($consultasql);
+        if(empty($_POST['nombre'])){
+            echo '<h3>El campo nombre es obligatorio</h3>';
+        }else{
+            $nombre = "'".$_POST['nombre']."'";
+        }
+
+        /*De esta forma guardamos NULL en la base de datos */
+        if(empty($_POST['icono'])){
+            $icono = 'NULL';
+        }else{
+            $icono = "'".$_POST['icono']."'";
+        }
+
+        if(empty($_POST['ruta'])){
+            echo '<h3>El campo ruta es obligatorio de rellenar</h3>';
+        }else{
+            $ruta = "'".$_POST['ruta']."'";
+        }
+
+        /*Realizamos la consulta para añadir datos en la base de datos */
+        if(!empty($_POST['nombre'] && $_POST['ruta'])){
+            
+            $consultasql = "INSERT INTO miniJuego (nombre, icono, ruta)
+                        VALUES($nombre,$icono,$ruta); ";
+        
+            $objMetodo->hacerconsulta($consultasql);
+
             /*Comprobamos las filas afectadas para añadir los minijuegos */
             if($objMetodo->comprobarafectada()>0){
-                echo '<h3>Se ha añadido satisfactioriamente el minijuego: </h3>'.'<h3 id="nombre">'.$_POST["nombre"].'</h3></br>';
+                echo '<h3>Se ha añadido satisfactioriamente el minijuego: </h3>'.'<h3 id="nombre">'.$nombre.'</h3></br>';
             }else{
                 echo '<h3>Se ha producido un error</h3>';
             }
-        }else{
-            echo '<h3>Los campos nombre y ruta son obligatorios</h3>';
+
         }
     }
     echo '<br><a href="listado.php">*Listado de Minijuegos</a>';
