@@ -19,9 +19,9 @@
                     echo '<label for="borrar">¿Estás seguro que quieres borrar este minijuego?</label><br>';
                     /*Enviamos la id del minijuego por url para identificarla */
                     echo '<input type="hidden" name="idMinijuego" value="'.$_GET['i'].'"><br>';
-                    /*Creamos un input radio para preguntarle al usuario si está seguro de querer borrar el campo */
-                    echo 'Si<input type="radio" name="borrar" value="1">';
-                    echo 'No<input type="radio" name="borrar" value="0"><br>';
+                    /*Creamos un input checkbox para preguntarle al usuario si está seguro de querer borrar el campo */
+                    echo 'Si<input type="checkbox" name="borrar" value="1">';
+                    echo 'No<input type="checkbox" name="borrar" value="0"><br>';
                     echo '<input type="submit" name="Enviar">';
                 echo '</form>';
         }else{
@@ -41,7 +41,7 @@
                 *Creo un header en el cual, cuando terminemos de realizar nuestra peticion en el borrado, nos redirija directamente al
                 *listado.php, en este caso.
             */
-            header('Location: listado.php');
+            header('Location: index.php');
         }
 
         

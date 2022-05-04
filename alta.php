@@ -46,7 +46,7 @@
         /*Realizamos la consulta para añadir datos en la base de datos */
         if(!empty($_POST['nombre'] && $_POST['ruta'])){
             
-            $consultasql = "INSERT INTO miniJuego (nombre, icono, ruta)
+            $consultasql = "UPDATE miniJuego (nombre, icono, ruta)
                         VALUES($nombre,$icono,$ruta); ";
         
             $objMetodo->hacerconsulta($consultasql);
@@ -60,7 +60,7 @@
 
         }
     }
-    echo '<br><a href="listado.php">*Listado de Minijuegos</a>';
+    echo '<br><a href="index.php">*Listado de Minijuegos</a>';
     /* echo '<br>'.phpversion(); */       
     ?>
 </body>
