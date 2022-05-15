@@ -11,8 +11,17 @@
     <?php
     include_once 'conexionbd.php';
 
+    /*Llamo a la conexion*/
+    $conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BD);  
+
+    /*Hago la consulta a la base de datos */
     $consultasql = "SELECT * FROM miniJuego";
-    if($objMetodo->revisarnumrow()>0){
+
+    /*Guardo el resultado de la consulta en una variable */
+    $resultado = $conexion->query($consultasql);
+
+    /*Compruebo las filas que devuelve la consulta */
+    if($resultado->num_rows>0){
 
       echo
           '
@@ -25,25 +34,29 @@
                 <th>Eliminar</th>
               </tr>
               ';
-              for($i=0;$i<$objMetodo->revisarnumrow();$i++){
-                $fila=$objMetodo->sacarfila();
+              /*Compruebo las filas que devuelve la consulta */
+              for($i=0;$i<$resultado->num_rows;$i++){
+                /*Extraigo el resultado de la consulta*/
+                $fila=$resultado->fetch_array();
                 if(empty($fila["icono"])){
                   $fila["icono"] = "NULL";
                 }
               echo '<tr>';
                 echo '<td>'.$fila["nombre"].'</td>';
-                echo '<td>'.$fila["ruta"].'</td>';
                 echo '<td>'.$fila["icono"].'</td>';
-                echo '<td><a href="modificar.php?i='.$fila["idMinijuego"].'">Modificar</a></td>';
-                echo '<td><a href="borrado.php?i='.$fila["idMinijuego"].'">Eliminar</a></td>';
+                echo '<td>'.$fila["ruta"].'</td>';
+                echo '<td><a href="modificar.php?i='.$fila["idMinijuego"].'"><img src="https://cdn-icons-png.flaticon.com/512/1159/1159876.png"></a></td>';
+                echo '<td><a href="borrado.php?i='.$fila["idMinijuego"].'"><img src="https://cdn-icons-png.flaticon.com/512/6794/6794645.png"></a></td>';
               echo '</tr>';
               }
           echo    '
             </table>
           ';
         }else {
-          if($objMetodo->revisarnumrow()<0){
-            echo 'Se ha producido un error';
+          /*Compruebo las filas que devuelve la consulta */
+          if($resultado= $conexion->num_rows<0){
+            echo 'Se ha producido un error', $conexion->errno;
+            echo '<br>'.$conexion->error;
           }else {
             echo 'No hay datos';
           }

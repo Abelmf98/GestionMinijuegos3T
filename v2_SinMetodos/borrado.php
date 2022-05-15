@@ -9,9 +9,7 @@
 </head>
 <body>
     <?php
-        require_once 'metodos.php';
-        /*Llamamos al objeto metodos */
-        $objMetodo = new metodos();
+        include_once 'conexionbd.php';
 
         if(!isset($_POST["Enviar"])){
             
@@ -31,15 +29,19 @@
                 *previamente en el listado de los mismos.
             */
             if($_POST["borrar"]==1){
+                /*Hago la conexion */
+                $conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BD);
+
+                /*Realizamos la consulta a la base de datos */
                 $consultasql = "DELETE
                                 FROM miniJuego
                                 WHERE idMinijuego=".$_POST['idMinijuego'].";";
-                /*LLamamos al metodo para hacer la consulta y completar la peticion */
-                $objMetodo->hacerconsulta($consultasql);
+                /*Le pasamos la consulta para ejecutarla */
+                $resultado = $conexion->query($consultasql);
             }
             /*
                 *Creo un header en el cual, cuando terminemos de realizar nuestra peticion en el borrado, nos redirija directamente al
-                *listado.php, en este caso.
+                *index.php (listado), en este caso.
             */
             header('Location: index.php');
         }

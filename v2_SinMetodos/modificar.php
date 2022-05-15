@@ -9,24 +9,27 @@
 </head>
 <body>
     <?php
-    require_once 'metodos.php';
-    /*Llamamos al objeto */
-    $objMetodo = new Metodos();
+    include_once 'conexionbd.php';
 
     /*Recuperamos las filas y columnas haciendo una consulta a la base de datos antes de modificar  */
     if(!isset($_POST["Enviar"])){
+        /*Hago la conexion */
+        $conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BD);
         $consultasql = "SELECT *
                         FROM miniJuego
                         WHERE idMinijuego=".$_GET["i"].";";
-        $objMetodo->hacerconsulta($consultasql);
-        $fila=$objMetodo->sacarfila();
+        /*Lo guardo en la variable resultado */
+        $resultado = $conexion->query($consultasql);
+
+        $fila=$resultado->fetch_array();
+        echo '<h1>Modificacion<h1>';
         /*Obtenemos los id por URL */
         echo '<form action="#" method="POST">';
         /*Mantenemos la informacion anteriormente añadida para ser modificada despues */
             echo '<input type="hidden" name="i" value="'.$_GET["i"].'">';
-            echo '<input type="text" name="nombre" value="'.$fila["nombre"].'">';
-            echo '<input type="text" name="icono" value="'.$fila["icono"].'">';
-            echo '<input type="text" name="ruta" value="'.$fila["ruta"].'">';
+            echo '<input type="text" name="nombre" value="'.$fila["nombre"].'" placeholder="nombre">';
+            echo '<input type="text" name="icono" value="'.$fila["icono"].'" placeholder="icono">';
+            echo '<input type="text" name="ruta" value="'.$fila["ruta"].'" placeholder="nombre">';
             echo '<input type="submit" name="Enviar">';
         echo '</form>';                    
     }else{
@@ -52,13 +55,14 @@
 
         if(!empty($_POST['nombre'] && $_POST['ruta'])){
             
+            $conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BD);
             /*Hacemos la consulta de update*/
             $consultasql = "UPDATE miniJuego
             SET nombre=$nombre, icono=$icono, ruta=$ruta
             WHERE idMinijuego=".$_POST['i'].";";
 
             /*Realizamos la consulta a la base de datos */
-            $objMetodo->hacerconsulta($consultasql);
+            $resultado = $conexion->query($consultasql);
 
             echo '<h3>Los datos se han modificado correctamente</h3>';
             echo '<br><h3><a href="index.php">*Volver a listado</a></h3>';

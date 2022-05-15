@@ -47,15 +47,18 @@
         /*Comprobamos que todos los datos son correctos y se añaden las filas*/
         if($guardar){
             
+            /*Llamamos a la conexion*/
             $conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BD);
 
+            /*Hacemos la consulta a la bd */
             $consultasql = "INSERT INTO miniJuego (nombre, icono, ruta)
                         VALUES($nombre,$icono,$ruta);";
 
+            /*Guardamos la consulta */
             $conexion->query($consultasql);
         
             /*Comprobamos las filas afectadas para añadir los minijuegos */
-            if($conexion->affected_rows >0){
+            if($conexion->affected_rows>0){
                 echo '<h3>Se ha añadido satisfactioriamente el minijuego: </h3>'.'<h3 id="nombre">'.$nombre.'</h3></br>';
             }else{
                 /*Mostramos el codigo de error */
