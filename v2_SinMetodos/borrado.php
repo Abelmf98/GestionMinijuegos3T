@@ -11,34 +11,26 @@
     <?php
         include_once 'conexionbd.php';
 
-        if(!isset($_POST["Enviar"])){
+        if(!isset($_POST["Aceptar"])){
             
                 echo '<form action="#" method="POST">';
                     echo '<label for="borrar">¿Estás seguro que quieres borrar este minijuego?</label><br>';
                     /*Enviamos la id del minijuego por url para identificarla */
                     echo '<input type="hidden" name="idMinijuego" value="'.$_GET['i'].'"><br>';
-                    /*Creamos un input checkbox para preguntarle al usuario si está seguro de querer borrar el campo */
-                    echo 'Si<input type="checkbox" name="borrar" value="1">';
-                    echo 'No<input type="checkbox" name="borrar" value="0"><br>';
-                    echo '<input type="submit" name="Enviar">';
+                    echo '<input type="submit" name="Aceptar" value="Aceptar">';
                 echo '</form>';
-        }else{
-            /*
-                *Le decimos que si marca Si, el cual tiene value 1, entonces se realizará la consulta DELETE, en este
-                *caso el dato proviene de la tabla miniJuego donde borrará el id que corresponda al minijuego seleccionado
-                *previamente en el listado de los mismos.
-            */
-            if($_POST["borrar"]==1){
-                /*Hago la conexion */
-                $conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BD);
 
-                /*Realizamos la consulta a la base de datos */
-                $consultasql = "DELETE
-                                FROM miniJuego
-                                WHERE idMinijuego=".$_POST['idMinijuego'].";";
-                /*Le pasamos la consulta para ejecutarla */
-                $resultado = $conexion->query($consultasql);
-            }
+                echo '<a href="index.php">*Volver a listado</a>';
+        }else{
+            /*Hago la conexion */
+            $conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BD);
+
+            /*Realizamos la consulta a la base de datos */
+            $consultasql = "DELETE
+                            FROM miniJuego
+                            WHERE idMinijuego=".$_POST['idMinijuego'].";";
+            /*Le pasamos la consulta para ejecutarla */
+            $resultado = $conexion->query($consultasql);
             /*
                 *Creo un header en el cual, cuando terminemos de realizar nuestra peticion en el borrado, nos redirija directamente al
                 *index.php (listado), en este caso.
