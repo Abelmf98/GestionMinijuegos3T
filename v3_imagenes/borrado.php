@@ -20,7 +20,7 @@
                     echo '<input type="submit" name="Aceptar" value="Aceptar">';
                 echo '</form>';
 
-                echo '<h3><a href="index.php">*Volver a listado</a></h3>';
+                echo '<a href="index.php">*Volver a listado</a>';
         }else{
             /*Hago la conexion */
             $conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BD);

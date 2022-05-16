@@ -1,0 +1,76 @@
+body{
+    margin: 0 auto;
+    background-color: rgb(206, 36, 36);
+    width: 1360px;
+    padding: 20px;
+}
+
+form{
+    padding: 10px;
+}
+
+h1{
+    color: white;
+}
+
+form input{
+    display: block;
+    width: auto;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 2px;
+    
+}
+
+input[type="submit"]{
+    border-radius: 2px;
+    border: solid 1px white;
+    background-color: black;
+    color: white;
+    width: 5%;
+}
+
+h3{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    margin: auto;
+}
+
+#nombre{
+    color: yellow;
+    margin: auto;
+}
+
+table{
+    border-collapse: collapse;
+    width: 1000px;
+    color:white
+}
+
+td,th{
+    border: 2px solid silver;
+    text-align: center;
+}
+
+th{
+    color: white;
+    font-weight: bold;
+    background-color: black;
+}
+
+a{
+    text-decoration: none;
+    color:white;
+}
+
+a:hover{
+    color: yellow;
+}
+
+img{
+    width: 20px;
+}
+
+label{
+    color: white;
+}
