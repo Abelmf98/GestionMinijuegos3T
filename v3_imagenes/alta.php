@@ -30,7 +30,7 @@
             $nombre = "'".$_POST['nombre']."'";
         }
 
-        /*De esta forma guardamos NULL en la base de datos */
+        
         if(isset($_FILES['icono'])) {
                 
             if (isset($_FILES['icono']['name']) && $_FILES['icono']['name'] != "") {
@@ -54,11 +54,12 @@
                     //Si las características son correctas se sube al servidor
                     if (move_uploaded_file($temp, './iconos/' . basename($_FILES['icono']['name']))) {
                         
-                        //MUestro un mensaje para mostrar que se ha subido.
+                        //Enseño un mensaje para mostrar que se ha subido.
                         echo '<h3>La imagen se ha subido correctamente</h3>';
                     }
                 }
             }
+            /*De esta forma guardamos NULL en la base de datos */
         }else {
 
             $icono='NULL';
