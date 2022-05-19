@@ -13,7 +13,7 @@
 
         if(!isset($_POST["Aceptar"])){
             
-                echo '<form action="#" method="POST">';
+                echo '<form action="#" method="POST" enctype="multipart/form-data">';
                     echo '<label for="borrar">¿Estás seguro que quieres borrar este minijuego?</label><br>';
                     /*Enviamos la id del minijuego por url para identificarla */
                     echo '<input type="hidden" name="idMinijuego" value="'.$_GET['i'].'"><br>';
@@ -22,6 +22,8 @@
 
                 echo '<a href="index.php">*Volver a listado</a>';
         }else{
+
+            $icono = $_FILES['icono'];
             /*Hago la conexion */
             $conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BD);
 
@@ -31,6 +33,10 @@
                             WHERE idMinijuego=".$_POST['idMinijuego'].";";
             /*Le pasamos la consulta para ejecutarla */
             $resultado = $conexion->query($consultasql);
+
+            unlink('./iconos/'.$icono);
+
+
             /*
                 *Creo un header en el cual, cuando terminemos de realizar nuestra peticion en el borrado, nos redirija directamente al
                 *index.php (listado), en este caso.

@@ -43,7 +43,7 @@
                 }
               echo '<tr>';
                 echo '<td>'.$fila["nombre"].'</td>';
-                echo '<td>'.$fila["icono"].'</td>';
+                echo "<td><img src='".'./iconos/'.$fila["icono"]."'></td>";
                 echo '<td>'.$fila["ruta"].'</td>';
                 echo '<td><a href="modificar.php?i='.$fila["idMinijuego"].'"><img src="https://cdn-icons-png.flaticon.com/512/1159/1159876.png"></a></td>';
                 echo '<td><a href="borrado.php?i='.$fila["idMinijuego"].'"><img src="https://cdn-icons-png.flaticon.com/512/6794/6794645.png"></a></td>';

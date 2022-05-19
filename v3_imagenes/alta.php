@@ -59,7 +59,7 @@
                     }
                 }
             }
-            /*De esta forma guardamos NULL en la base de datos */
+        /*De esta forma guardamos NULL en la base de datos */
         }else {
 
             $icono='NULL';
